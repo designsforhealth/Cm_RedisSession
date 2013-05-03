@@ -326,7 +326,8 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             if ($tries == 1 /* TODO - $tries % 10 == 0 ? */) {
                 $detectZombies = TRUE;
                 // TODO: allow configuration of sleep period?
-                usleep(1500000); // 1.5 seconds
+                //usleep(1500000); // 1.5 seconds
+                usleep(150000); // .15 seconds
             }
             // Detect dead processes every 10 seconds
             if ($tries % self::DETECT_ZOMBIES == 0) {
@@ -390,7 +391,8 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             }
             else {
                 // TODO: configurable wait period?
-                sleep(1);
+                //sleep(1);
+                usleep(15000); // .015 seconds
             }
         }
         self::$failedLockAttempts = $tries;
